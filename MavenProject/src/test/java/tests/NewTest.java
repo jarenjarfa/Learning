@@ -1,5 +1,6 @@
 package tests;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -9,19 +10,20 @@ import org.testng.annotations.AfterClass;
 
 public class NewTest {
 
-	public WebDriver driver;
+	private static WebDriver driver;
+
+	setup s = new setup();
+	testCase t = new testCase();
 
 	@Test
-	public void openMyBlog() {
-		driver.get("https://www.softwaretestingmaterial.com/");
+	public void openMyBlog() throws Exception {
+
+		t.findAndClickRadioButton(driver);
 	}
 
 	@BeforeClass
-	public void beforeClass() {
-
-		System.setProperty("webdriver.chrome.driver", "/home/jarfa/Downloads/chromedriver/chromedriver");
-		driver = new ChromeDriver();
-
+	public void BeforeClass() {
+		driver=s.setupDriver();
 	}
 
 	@AfterClass
